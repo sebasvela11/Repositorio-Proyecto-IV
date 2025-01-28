@@ -11,31 +11,53 @@ public class PlayerMove : MonoBehaviour
     public bool betterJump = false;
     public float fallMultiplier = 0.5f;
     public float lowJumpMultiplier = 1;
-    
 
+    public SpriteRenderer spriteRenderer;
+    Animator animator;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        if(Input.GetKey("d") || Input.GetKey("right"))
+        if (Input.GetKey("d") || Input.GetKey("right"))
         {
             rb2d.velocity = new Vector2(runSpeed, rb2d.velocity.y);
+            spriteRenderer.flipX = false;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
             rb2d.velocity = new Vector2(-runSpeed, rb2d.velocity.y);
+            spriteRenderer.flipX = true;
         }
         else
         {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
 
-        if(Input.GetKey("space") && CheckGround.IsGrounded)
+        if (Input.GetKey("space") && CheckGround.IsGrounded)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
+        }
+
+        if (CheckGround.IsGrounded == false)
+        {
+            animator.SetBool("Run", false);
+            animator.SetBool("Jump", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+            if (rb2d.velocity.x != 0)
+            {
+                animator.SetBool("Run", true);
+            }
+            else
+            {
+                animator.SetBool("Run", false);
+            }
         }
 
         if (betterJump)
