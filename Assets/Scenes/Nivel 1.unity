@@ -630,6 +630,7 @@ MonoBehaviour:
   betterJump: 0
   fallMultiplier: 0.5
   lowJumpMultiplier: 1
+  spriteRenderer: {fileID: 616952160}
 --- !u!1001 &779733262
 PrefabInstance:
   m_ObjectHideFlags: 0
