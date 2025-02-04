@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerSpawn : MonoBehaviour
 {
+    Animator animator;
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         if (PlayerPrefs.GetInt("checkPointScene") == SceneManager.GetActiveScene().buildIndex)
         {
             if (PlayerPrefs.GetFloat("checkPointX") != 0 && PlayerPrefs.GetFloat("checkPointY") != 0)
@@ -22,5 +25,11 @@ public class PlayerSpawn : MonoBehaviour
         PlayerPrefs.SetFloat("checkPointX", x);
         PlayerPrefs.SetFloat("checkPointY", y);
         PlayerPrefs.SetFloat("checkPointScene", scene);
+    }
+
+    public void PlayerDamage()
+    {
+        animator.Play("Hit");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
