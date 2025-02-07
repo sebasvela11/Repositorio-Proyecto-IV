@@ -537,6 +537,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &578475136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5853815193730922771, guid: c68d0410fbd03304a97fde318ff56493, type: 3}
+  m_PrefabInstance: {fileID: 5853815193273387085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &578475141 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5853815193730922770, guid: c68d0410fbd03304a97fde318ff56493, type: 3}
+  m_PrefabInstance: {fileID: 5853815193273387085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &578475142 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5853815193730922797, guid: c68d0410fbd03304a97fde318ff56493, type: 3}
+  m_PrefabInstance: {fileID: 5853815193273387085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &578475144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578475136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d349fe6829f429948b4afc92c32ad108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSelected: 2
+  animator: {fileID: 578475141}
+  spriteRenderer: {fileID: 578475142}
+  playerController:
+  - {fileID: 9100000, guid: 763c3c86e4f233e4cadf3f9d03937f61, type: 2}
+  - {fileID: 9100000, guid: 5048a3c017351764399dc83a6894b608, type: 2}
+  - {fileID: 9100000, guid: 3d52633ae3363ab42986f198e97d5b0e, type: 2}
+  - {fileID: 9100000, guid: 66d1ff425c860ad47b50193bc83343ce, type: 2}
+  playerRenderer:
+  - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
+  - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
+  - {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
 --- !u!1 &612114025
 GameObject:
   m_ObjectHideFlags: 0

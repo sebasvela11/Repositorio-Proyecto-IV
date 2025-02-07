@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public float runSpeed = 4;
-    public float jumpSpeed = 5;
-    public float doubleJumpSpeed = 5;
+    public float runSpeed = 2;
+    public float jumpSpeed = 3;
+    public float doubleJumpSpeed = 3;
     private bool canDoubleJump;
 
     Rigidbody2D rb2d;
@@ -17,30 +17,36 @@ public class PlayerMove : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     Animator animator;
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    public void Update()
+    private void Update()
     {
 
         if (Input.GetKey("space"))
         {
             if (CheckGround.IsGrounded)
             {
+                //PUEDE DAR UN SALTO DOBLE
                 canDoubleJump = true;
+                //REALIZA EL SALTO NORMAL
                 rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
             }
             else
             {
                 if (Input.GetKeyDown("space"))
                 {
-                    if(canDoubleJump)
+                    if (canDoubleJump)
                     {
+                        //ANIMACION SALTO DOBLE
                         animator.SetBool("Double Jump", true);
+                        //REALIZA EL DOBLE SALTO
                         rb2d.velocity = new Vector2(rb2d.velocity.x, doubleJumpSpeed);
+                        //NO PUEDE DAR DOBLE SALTO
                         canDoubleJump = false;
                     }
                 }
@@ -67,7 +73,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if(rb2d.velocity.y < 0)
+        if (rb2d.velocity.y < 0)
         {
             animator.SetBool("Falling", true);
         }
@@ -75,6 +81,7 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool("Falling", false);
         }
+
     }
 
     private void FixedUpdate()
@@ -94,7 +101,7 @@ public class PlayerMove : MonoBehaviour
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
 
-        //if (Input.GetKey("space") && CheckGround.IsGrounded)
+        //if (Input.GetKey("space") && CheckGround.IsGrounded == true)
         //{
         //    rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
         //}
@@ -104,7 +111,7 @@ public class PlayerMove : MonoBehaviour
         //    animator.SetBool("Run", false);
         //    animator.SetBool("Jump", true);
         //}
-        //else
+        //else 
         //{
         //    animator.SetBool("Jump", false);
         //    if (rb2d.velocity.x != 0)
@@ -119,12 +126,12 @@ public class PlayerMove : MonoBehaviour
 
         if (betterJump)
         {
-            if(rb2d.velocity.y < 0)
+            if (rb2d.velocity.y < 0)
             {
                 rb2d.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
             }
 
-            if(rb2d.velocity.y > 0 && !Input.GetKey("space"))
+            if (rb2d.velocity.y > 0 && !Input.GetKey("space"))
             {
                 rb2d.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
             }
